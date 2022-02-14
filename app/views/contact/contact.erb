@@ -1,0 +1,23 @@
+
+
+<h1> Contact: 100 rue de THP, LA LUNE LuneVille 1000 </h1> 
+
+<br/>
+
+<div> Bienvenue a notre equipe </div> 
+
+<br/>
+<div> Voici nos membres </div>  
+<br/>
+
+
+
+
+
+<% @users.each do |user| %>  
+<div> Prenom: <%=user.firstname %> 
+<div> Nom : <%=user.lastname %>  </div> 
+<div> Description: <%=user.description %> </div>
+<br/>
+
+<% end %>

@@ -7,6 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first) 
 
 require 'faker'
+City.delete_all
+User.delete_all
+Gossip.delete_all 
+Like.delete_all 
+Comment.delete_all 
+Tag.delete_all
+TagsGossip.delete_all
+PrivateMessage.delete_all 
+PrivateMessageUser.delete_all
+
 
 cities=[] 
 
@@ -16,13 +26,13 @@ cities=[]
 end
 users=[] 
 10.times do |i| 
-    users.push(User.create(firstname:Faker::Name.name,lastname:Faker::Name.name,email:Faker::Internet.email,description:Faker::String.random(length: 3..100),age:Faker::Number.number(digits:3),city:cities[i]));
+    users.push(User.create(firstname:Faker::Name.name,lastname:Faker::Name.name,email:Faker::Internet.email,description:Faker::Lorem.sentence(word_count: 50),age:Faker::Number.number(digits:3),city:cities[i]));
 end 
 
 gossips=[] 
 
 10.times do |i|
-    gossips.push(Gossip.create(title:Faker::String.random(length:20), content:Faker::String.random(length:200),user:users[i]));
+    gossips.push(Gossip.create(title:Faker::Lorem.sentence(word_count:2), content:Faker::Lorem.sentence(word_count:20),user:users[i]));
 end 
 
 likes=[] 
@@ -33,13 +43,13 @@ end
 
 comments=[]
 10.times do |i| 
-    comments.push(Comment.create(content:Faker::String.random(length:50),gossip:gossips[2]))
+    comments.push(Comment.create(content:Faker::Lorem.sentence(word_count:50),gossip:gossips[2]))
 end 
 
 tags=[] 
 
 10.times do |i|
-    tags.push(Tag.create(title:Faker::String.random(length:10)))
+    tags.push(Tag.create(title:Faker::Lorem.sentence(word_count:2)))
 end 
 
 tags_gossips=[]
@@ -51,7 +61,7 @@ private_messages=[]
 
 
 10.times do |i|
-    private_messages.push(PrivateMessage.create(content:Faker::String.random(length:40),user:users[i]))
+    private_messages.push(PrivateMessage.create(content:Faker::Lorem.sentence(word_count:5),user:users[i]))
 end  
 
 private_message_users=[]
