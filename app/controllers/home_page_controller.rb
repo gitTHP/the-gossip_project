@@ -16,7 +16,14 @@ class HomePageController < ApplicationController
 
     def find_gossip 
         @gossip=Gossip.find(params[:gossip])
-    end 
+    end  
+
+    def create_gossip_view 
+        if session[:user_id]==nil 
+            flash[:danger]="Utilisateur non connecté"
+            redirect_to "/"
+        end
+    end
 
     def create_gossip 
 
@@ -43,5 +50,21 @@ class HomePageController < ApplicationController
         flash[:success] = "User bien crée! !"
 
         redirect_to '/' 
+    end 
+
+    def edit_gossip_view 
+        @gossip=Gossip.find(params[:gossip])
+    end 
+
+    def edit_gossip 
+        gossip=Gossip.find(params[:gossip]);
+        puts "GET GOSSIP"
+        puts gossip
+        puts "GET PARAMS"
+        puts params
+        gossip.title=params[:title]
+        gossip.content=params[:content] 
+        gossip.save
+        redirect_to '/'
     end
 end

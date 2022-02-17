@@ -1,0 +1,19 @@
+<h2> This is the signup page </h2>
+
+<%= form_with url:edit_gossip_url(@gossip.id) , method: :post do |form| %>
+<div> 
+  <%= form.label :title, "titre" %>
+  <input type="text" value=<%=@gossip.title %> name="title" />
+</div> 
+
+
+
+<div> 
+     <%= form.label :content, "contenu" %>
+     <textarea name="content" rows=20 cols=20> <%=@gossip.content %></textarea>
+</div>
+
+
+
+  <%= form.submit "Envoyer" %>
+<% end %>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/user/login',to:'session#createsessionview'
   post '/user/signup',to: 'home_page#signup', as: 'signup_action'
   get '/user/signup', to: 'home_page#signupview' 
-  get '/user/signout', to:'session#logout'
+  get '/user/signout', to:'session#logout' 
+  post '/gossip/modify/:gossip',to:"home_page#edit_gossip",as: "edit_gossip"
+  get '/gossip/modify/:gossip', to:"home_page#edit_gossip_view"
  
 end
