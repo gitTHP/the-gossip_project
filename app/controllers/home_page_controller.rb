@@ -58,13 +58,16 @@ class HomePageController < ApplicationController
 
     def edit_gossip 
         gossip=Gossip.find(params[:gossip]);
-        puts "GET GOSSIP"
-        puts gossip
-        puts "GET PARAMS"
-        puts params
+        
         gossip.title=params[:title]
         gossip.content=params[:content] 
         gossip.save
         redirect_to '/'
+    end 
+
+    def delete_gossip 
+        Gossip.destroy(params[:gossip])
+        redirect_to '/'
+        
     end
 end

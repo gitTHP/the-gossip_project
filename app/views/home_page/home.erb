@@ -11,6 +11,7 @@
      <div> <%=link_to "voir l'auteur",find_author_url(gossip.user.id) %>  </div>  
      <% if gossip.user.id==session[:user_id] %>
         <div> <%=link_to "editer le potin",edit_gossip_url(gossip.id) %> </div>
+        <div> <%=link_to "supprimer le potin",delete_gossip_url(gossip.id) %> </div>
      <% end %>
     <br/> 
     <% end %> 
