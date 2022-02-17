@@ -69,5 +69,25 @@ class HomePageController < ApplicationController
         Gossip.destroy(params[:gossip])
         redirect_to '/'
         
+    end 
+
+    def like_gossip 
+        user=User.find(session[:user_id]);
+        gossip=Gossip.find(params[:gossip])
+        
+        find_like=Like.where(gossip:gossip,user:user)
+       
+        if find_like.length==0
+            Like.create(user:user,gossip:gossip) 
+            redirect_to '/'
+
+        else 
+            Like.destroy(find_like.ids) 
+            redirect_to '/'
+
+        end
+       
+
+       
     end
 end
