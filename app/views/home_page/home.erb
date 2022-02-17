@@ -1,15 +1,28 @@
 
 
+<% if session[:user_id] %>
 <h2> Bienvenue a mon projet de gossips </h2> 
 <br/>
-
-<% @gossips.each do |gossip| %>
+    <% if @gossips.length>0 %>
+    <% @gossips.each do |gossip| %>
     <div> Titre: <%=gossip.title %> </div> 
     <div> Contenu: <%=gossip.content %></div> 
     <div> <%=link_to "voir le gossip",find_gossip_url(gossip.id) %></div> 
-    <div> <%=link_to "voir l'auteur",find_author_url(gossip.user.id) %> </div>
-    <br/>
-<% end %>  
+     <div> <%=link_to "voir l'auteur",find_author_url(gossip.user.id) %>  </div> 
+    <br/> 
+    <% end %> 
+    <% else %>
+    <h2>  Pas Encore de Potins Ecrit </h2>
+    <% end %> 
+    <h4> Vous voulez ecrire un Potin ? </h4> 
+    <div> <%=link_to "ecrire un potin",create_gossip_url %> </div>
+  
+
+<% else %>
+<h2> Bienvenue a la page d'accueil, viullez vous inscrire ou vous connectez si vous avez deja un compte ! </h2>
+
+
+<% end %>
 
 
 

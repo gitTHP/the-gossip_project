@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_110258) do
+ActiveRecord::Schema.define(version: 2022_02_16_151116) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_110258) do
     t.string "email"
     t.integer "age"
     t.integer "city_id"
+    t.string "password_digest"
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 

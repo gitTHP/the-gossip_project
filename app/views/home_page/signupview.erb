@@ -1,0 +1,32 @@
+<h2> This is the signup page </h2>
+
+<%= form_with url:signup_action_url , method: :post do |form| %>
+<div> 
+  <%= form.label :firstname, "Votre Prenom" %>
+  <%= form.text_field :firstname %> 
+</div> 
+
+
+
+<div> 
+     <%= form.label :lastname, "Votre Nom" %>
+     <%= form.text_field :lastname %> 
+</div>
+
+<div> 
+     <%= form.label :email, "Votre Email" %>
+     <%= form.email_field :email %> 
+</div> 
+
+<div> 
+     <%= form.label :password, "Votre Mot De Passe" %>
+     <%= form.password_field :password %> 
+</div> 
+<div> 
+ <div class="form-group">
+  <%= form.label :city, "Dans quelle ville viviez vous?" %>
+    <%= form.select :city, @cities.map { |city| [city.name, city.id]}, {} %>
+  </div>
+
+  <%= form.submit "Search" %>
+<% end %>

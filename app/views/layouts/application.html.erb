@@ -10,13 +10,34 @@
   </head>
 
   <body> 
-  <header class="bg-info p-3"> 
+
+
+  <header class="bg-info p-3">  
+
+  <% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+  <% if session[:user_id] %>
   <div class="d-flex justify-content-around"> 
     <div class="text-white"> This Is My Header </div>  
     <div class="mr-2"> <%= link_to "Voir Equipe", "/contact" %> </div> 
+      <div class="mr-2"> <%= link_to "Deconnexion", "/user/signout" %> </div> 
     
     <div> <%= link_to "Accueil", "/" %> 
-    </div>
+  </div>  
+
+    <% else %>
+    <div class="d-flex justify-content-around"> 
+    <div class="text-white"> This Is My Header </div>  
+    <div class="mr-2"> <%= link_to "Inscription", "/user/signup" %> </div> 
+    <div class="mr-2"> <%= link_to "Connexion", "/user/login" %> </div> 
+   
+    
+    <div> <%= link_to "Accueil", "/" %> 
+  </div>  
+    <% end %>
      
   </header>
     <%= yield %>
